@@ -31,7 +31,7 @@ contract NFTMarket is ReentrancyGuard {
     mapping(uint256 => MarketItem) private idToMarketitem;
 
     event CreateMarketItem(
-        uint256 itemId,
+        uint256 indexed itemId,
         address indexed nftContractAddress,
         uint256 indexed tokenId,
         uint256 price,
@@ -44,6 +44,7 @@ contract NFTMarket is ReentrancyGuard {
         return listingPrice;
     }
 
+    // create an item on market
     function createMarketItem(
         address _nftContractAddress,
         uint256 _tokenId,
@@ -85,6 +86,7 @@ contract NFTMarket is ReentrancyGuard {
         );
     }
 
+    // sell item
     function createMarketSale(address nftContract, uint256 itemId)
         public
         payable
@@ -157,6 +159,7 @@ contract NFTMarket is ReentrancyGuard {
         return items;
     }
 
+    // return items a user has listed
     function fetchItemsListed() public view returns (MarketItem[] memory) {
         uint256 totalItems = _itemIds.current();
         uint256 itemsCount = 0;
