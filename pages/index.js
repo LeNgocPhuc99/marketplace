@@ -24,6 +24,7 @@ export default function Home() {
       Market.abi,
       provider
     );
+
     const data = await marketContract.fetchMarketItems();
 
     const items = await Promise.all(

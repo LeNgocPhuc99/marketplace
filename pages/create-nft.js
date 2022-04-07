@@ -66,6 +66,7 @@ export default function CreateItem() {
     let tx = await transaction.wait();
 
     let event = tx.events[0];
+    console.log(event);
     let value = event.args[2];
     let tokenId = value.toNumber();
     console.log(event);
